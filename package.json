@@ -19,12 +19,12 @@
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "build:cjs": "node tools/cleanup cjs && tsc -p config/tsconfig.cjs.json",
-    "build:esm": "node tools/cleanup esm && tsc -p config/tsconfig.esm.json",
+    "build:esm": "node tools/cleanup esm && tsc -p config/tsconfig.esm.json && cp config/package-esm.json dist/esm/package.json",
     "build:types": "node tools/cleanup types && tsc -p config/tsconfig.types.json",
     "package": "npm run build && cp package.json dist/package.json && npm pack",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "semantic-release": "semantic-release"
   },
   "repository": {
