@@ -25,7 +25,8 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "test": "echo \"Error: no test specified\"",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "cm": "cz"
   },
   "repository": {
     "type": "git",
@@ -40,8 +41,9 @@
   "devDependencies": {
     "@ryansonshine/commitizen": "^4.2.8",
     "@ryansonshine/cz-conventional-changelog": "^3.3.4",
-    "conventional-changelog-conventionalcommits": "^6.1.0",
     "@types/ws": "^8.5.5",
+    "conventional-changelog-conventionalcommits": "^6.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "prettier": "^2.8.8",
     "semantic-release": "^21.0.5",
     "ts-node": "^10.9.1",
@@ -100,5 +102,10 @@
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
