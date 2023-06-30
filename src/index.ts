@@ -1,4 +1,3 @@
-// TODO: Refactor this into its own package
 import WebSocket from 'ws'
 import { BaseMill } from '@open-oracle-origami/origami-js-sdk'
 
