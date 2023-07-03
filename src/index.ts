@@ -1,7 +1,7 @@
 import WebSocket from 'ws'
 import { BaseMill } from '@open-oracle-origami/origami-js-sdk'
 
-class CoinbaseMill extends BaseMill {
+export class CoinbaseMill extends BaseMill {
   private ws: WebSocket
   private readonly pairs: string[]
 
