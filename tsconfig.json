@@ -1,14 +1,5 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "declaration": true,
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+  "extends": "@tsconfig/recommended/tsconfig.json",
+  "include": ["jest.config.ts", "src/**/*", "test/**/*"],
+  "exclude": ["node_modules"]
 }

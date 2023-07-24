@@ -1,57 +1,64 @@
 {
-  "private": false,
   "name": "@open-oracle-origami/origami-js-mill-coinbase",
-  "version": "0.0.1",
-  "description": "",
-  "main": "./dist/cjs/index.js",
-  "types": "./dist/types/index.d.js",
-  "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    }
-  },
-  "files": [
-    "dist/"
+  "version": "0.0.0",
+  "private": false,
+  "description": "Open Oracle Origami Node JS Coinbase Mill",
+  "keywords": [
+    "open",
+    "oracle",
+    "origami",
+    "mill",
+    "coinbase",
+    "web3",
+    "decentralized",
+    "blockchain"
   ],
-  "scripts": {
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
-    "build:cjs": "node tools/cleanup cjs && tsc -p config/tsconfig.cjs.json",
-    "build:esm": "node tools/cleanup esm && tsc -p config/tsconfig.esm.json",
-    "build:types": "node tools/cleanup types && tsc -p config/tsconfig.types.json",
-    "package": "npm run build && cp package.json dist/package.json && npm pack",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json",
-    "test": "echo \"Error: no test specified\"",
-    "semantic-release": "semantic-release",
-    "cm": "cz"
+  "homepage": "https://github.com/open-oracle-origami/origami-js-mill-coinbase#readme",
+  "bugs": {
+    "url": "https://github.com/open-oracle-origami/origami-js-mill-coinbase/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/open-oracle-origami/origami-js-mill-coinbase.git"
   },
-  "engines": {
-    "node": ">=18.0"
-  },
-  "keywords": [],
+  "license": "MIT",
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@ryansonshine/commitizen": "^4.2.8",
-    "@ryansonshine/cz-conventional-changelog": "^3.3.4",
-    "@types/ws": "^8.5.5",
-    "conventional-changelog-conventionalcommits": "^6.1.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "prettier": "^2.8.8",
-    "semantic-release": "^21.0.5",
-    "ts-node": "^10.9.1",
-    "tslint": "^6.1.3",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^5.1.3"
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "rm -rf ./dist/cjs && tsc -p config/tsconfig.cjs.json",
+    "build:esm": "rm -rf ./dist/esm && tsc -p config/tsconfig.esm.json",
+    "build:types": "rm -rf ./dist/types && tsc -p config/tsconfig.types.json",
+    "cm": "cz",
+    "lint": "eslint jest.config.ts ./src/ ./test/ --fix",
+    "package": "npm run build && cp package.json dist/package.json && npm pack",
+    "prepare": "husky install",
+    "semantic-release": "semantic-release",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --cache --cache-location .eslintcache --fix"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "release": {
     "branches": [
-      "main"
+      "main",
+      {
+        "name": "alpha",
+        "channel": "alpha",
+        "prerelease": "alpha"
+      }
     ],
     "plugins": [
       [
@@ -95,15 +102,42 @@
     ]
   },
   "dependencies": {
-    "@open-oracle-origami/origami-js-sdk": "^1.6.3",
     "ws": "^8.13.0"
   },
-  "optionalDependencies": {
-    "bufferutil": "^4.0.7"
+  "devDependencies": {
+    "@tsconfig/esm": "^1.0.4",
+    "@tsconfig/node18": "^18.2.0",
+    "@tsconfig/recommended": "^1.0.2",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.2",
+    "@types/pubsub-js": "^1.8.3",
+    "@types/ws": "^8.5.5",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "commitizen": "^4.3.0",
+    "conventional-changelog-conventionalcommits": "^6.1.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "jest": "^29.6.1",
+    "lint-staged": "^13.2.1",
+    "prettier": "^3.0.0",
+    "semantic-release": "^21.0.7",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.2.1",
+    "typescript": "^5.0.4"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "peerDependencies": {
+    "@open-oracle-origami/origami-js-sdk": "^1.0.0-alpha.10"
+  },
+  "optionalDependencies": {
+    "bufferutil": "^4.0.7",
+    "utf-8-validate": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=18.16.1"
   }
 }
