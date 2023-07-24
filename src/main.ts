@@ -1,5 +1,3 @@
-// Docs: https://docs.cloud.coinbase.com/exchange/docs/websocket-overview
-
 import WebSocket from 'ws'
 import { CallbackFn } from '@open-oracle-origami/origami-js-sdk'
 
